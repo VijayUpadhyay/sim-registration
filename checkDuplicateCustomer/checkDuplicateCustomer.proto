@@ -1,0 +1,15 @@
+syntax="proto3";
+package checkDuplicateCustomer;
+option go_package = "./custvalidator";
+
+service CheckDuplicateCustomer{
+	rpc CheckDuplicateCustomerBeforeCreate(RequestMsg) returns (ResponseMsg){}
+}
+
+message RequestMsg{
+	int64 aadharNumber=1;
+}
+
+message ResponseMsg{
+	bool custExist=1;
+}

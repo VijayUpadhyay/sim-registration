@@ -1,0 +1,33 @@
+syntax="proto3";
+
+package simRegistration;
+
+option go_package="./registration";
+
+service SimRegistration{
+	rpc RegisterCustomer(CustomerDetails) returns (CreateResponseMessage){}
+}
+
+message CustomerDetails{
+	int32 custId=1;
+	string custName=2;
+	string email=3;
+	string alternateContactNumber=4;
+	int64 aadharNumber=5;
+
+	message Addrress{
+	string houseNumber=1;
+	string street=2;
+	string city=3;
+	string state=4;
+	int32 zip=5;
+	}
+
+	repeated Addrress addresses=6;
+}
+
+message CreateResponseMessage{
+	int32 custId=1;
+	string successMsg=2;
+
+}
